@@ -13,17 +13,23 @@ app.post('/', async function (req, res) {
       .getRepository(User)
       .findOneBy({ did: request.did });
 
-    if (user?._id) {
+    const rows = await myDataSource.getRepository(User).count({ take: 1 });
+
+    if (user?._id && rows < 2) {
       const tokens = await getToken(user.did);
       return res.send(tokens);
     }
 
-    const newUser = myDataSource.getRepository(User).create(request);
-    await myDataSource.getRepository(User).save(newUser);
+    if (rows < 1) {
+      const newUser = myDataSource.getRepository(User).create(request);
+      await myDataSource.getRepository(User).save(newUser);
 
-    const tokens = await getToken(request.did);
+      const tokens = await getToken(request.did);
 
-    return res.send(tokens);
+      return res.send(tokens);
+    }
+
+    return res.status(403);
   } catch (e) {
     console.log(e);
     return res.status(500);

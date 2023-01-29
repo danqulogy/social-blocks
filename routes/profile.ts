@@ -4,6 +4,18 @@ import { verifyToken } from '../utils';
 const express = require('express');
 const app = express.Router();
 
+// get profile
+app.get('/', async function (req, res) {
+  try {
+    const results = await myDataSource.getRepository(Profile).find();
+
+    return res.json(results[0]);
+  } catch (e) {
+    console.log(e);
+    return res.status(500);
+  }
+});
+
 // create profile
 app.put('/', async function (req, res) {
   try {
@@ -21,18 +33,6 @@ app.put('/', async function (req, res) {
     }
 
     return res.status(403);
-  } catch (e) {
-    console.log(e);
-    return res.status(500);
-  }
-});
-
-// get profile
-app.get('/', async function (req, res) {
-  try {
-    const results = await myDataSource.getRepository(Profile).find();
-
-    return res.json(results[0]);
   } catch (e) {
     console.log(e);
     return res.status(500);
