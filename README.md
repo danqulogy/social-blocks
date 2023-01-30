@@ -1,9 +1,9 @@
 # Social Blocks
 
-## Monorepo for my first DApp on Arc Block
+## Monorepo for the Social Blocks DApp on Arc Block
 
-- This project can be deployed on a Blocklet Server and used with only one user per an instance.
-- Once a user authenticates with DID wallet, they are the sole owner.
+- This project can be deployed on a Blocklet Server and allows only one user per an instance.
+- Once a user authenticates with DID Wallet, they are the sole owner.
 - If deployed to a production server, you can easily map your site to the domain of your choice.
 
 ## All commands can be run from root
