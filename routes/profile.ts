@@ -63,4 +63,28 @@ app.post('/', async function (req, res) {
   }
 });
 
+// update profile photo
+app.post('/image', async function (req, res) {
+  try {
+    const verified = verifyToken(req, res);
+    const request = req.body;
+
+    if (verified === request.did) {
+      const profile = await myDataSource.getRepository(Profile).findOneBy({
+        did: request.did,
+      });
+
+      myDataSource.getRepository(Profile).merge(profile, request);
+      await myDataSource.getRepository(Profile).save(profile);
+
+      return res.status(201);
+    }
+
+    return res.status(403);
+  } catch (e) {
+    console.log(e);
+    return res.status(500);
+  }
+});
+
 module.exports = app;

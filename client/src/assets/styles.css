@@ -146,7 +146,37 @@ button {
   display: none !important;
 }
 
+.ant-upload-list-text {
+  color: #ffffff;
+}
+
+.ant-upload-list-item-done {
+  margin: auto;
+  display: block !important;
+}
+
+.anticon-delete {
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.anticon-paper-clip {
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.ant-upload-list-item-name {
+  margin-top: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #4096ff !important;
+}
+
+.ant-upload-list-item-name:hover {
+  text-decoration: underline;
+}
+
 ::placeholder {
   color: #001529 !important;
-  opacity: 0.5; /* Firefox */
+  opacity: 0.5;
 }

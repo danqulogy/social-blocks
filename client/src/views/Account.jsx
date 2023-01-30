@@ -3,11 +3,14 @@ import { Button, Form, Input, Row, Col, Typography, Layout } from 'antd';
 import { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import Logo from '../assets/Logo';
+import FileUpload from '../components/FileUpload';
 const { Text } = Typography;
 const { Content } = Layout;
 
 export default function Account() {
   const [profile, setProfile] = useState(null);
+  const [previewImage, setPreviewImage] = useState('');
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -53,6 +56,15 @@ export default function Account() {
         <form onSubmit={handleSubmit}>
           <Row justify="center" className="top-24">
             <Col xs={18} lg={6}>
+              <FileUpload
+                previewImagew={previewImage}
+                setPreviewImage={setPreviewImage}
+              />
+            </Col>
+          </Row>
+
+          <Row justify="center" className="top-24">
+            <Col xs={18} lg={6} className="top-24">
               <Form layout="vertical" autoComplete="off">
                 <Form.Item name="name" label="Name">
                   <Input
