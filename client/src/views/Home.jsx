@@ -35,7 +35,7 @@ export default function Home() {
             <Row justify="center" className="top-24">
               <Col xs={18} lg={6}>
                 <Typography className="top-12">
-                  <Image src={Logo} alt="Social Blocks" />
+                  <img src={Logo} alt="Social Blocks" />
                   <br />
                   <Button
                     type="link"
@@ -227,7 +227,7 @@ export default function Home() {
           <Row justify="center" className="top-24">
             <Col xs={18} lg={6}>
               <Typography className="top-12">
-                <Image src={Logo} alt="Social Blocks" />
+                <img src={Logo} alt="Social Blocks" />
                 <br />
                 <Button
                   type="link"

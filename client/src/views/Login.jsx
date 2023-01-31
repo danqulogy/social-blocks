@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Connect } from '@did-connect/react';
-import { Button, Row, Col, Typography, Layout, Image } from 'antd';
+import { Button, Row, Col, Typography, Layout } from 'antd';
 import { Helmet } from 'react-helmet';
 import Logo from '../assets/logo.svg';
 import { useNavigate } from 'react-router-dom';
@@ -12,7 +12,6 @@ const { Content } = Layout;
 
 export default function Login() {
   const [open, setOpen] = useState(false);
-  const [message, setMessage] = useState('Connect');
   const dispatch = useAuthDispatch();
   const navigate = useNavigate();
 
@@ -30,8 +29,6 @@ export default function Login() {
 
   const handleComplete = async (ctx, e) => {
     try {
-      setMessage('You are now connected');
-      console.log(ctx.currentConnected);
       setOpen(false);
 
       await createProfile(ctx.currentConnected);
@@ -53,7 +50,7 @@ export default function Login() {
         <Row justify="center" className="top-24">
           <Col xs={18} lg={4}>
             <Typography className="top-12 bottom-24">
-              <Image src={Logo} alt="Social Blocks" />
+              <img src={Logo} alt="Social Blocks" />
 
               <br />
               <Button
@@ -83,7 +80,7 @@ export default function Login() {
               className="email-bg"
               onClick={() => setOpen(true)}
             >
-              {message}
+              Connect
             </Button>
           </Col>
         </Row>

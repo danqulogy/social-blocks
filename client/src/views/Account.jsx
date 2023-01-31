@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { Button, Form, Input, Row, Col, Typography, Layout, Image } from 'antd';
+import { Button, Form, Input, Row, Col, Typography, Layout } from 'antd';
 import { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import Logo from '../assets/logo.svg';
@@ -56,7 +56,7 @@ export default function Account() {
         <Row justify="center" className="top-24">
           <Col xs={18} lg={4}>
             <Typography className="top-12 bottom-24">
-              <Image src={Logo} alt="Social Blocks" />
+              <img src={Logo} alt="Social Blocks" />
 
               <br />
               <Button
@@ -83,9 +83,9 @@ export default function Account() {
           </Col>
         </Row>
 
-        <Row justify="center" className="top-24">
-          <Col xs={18} lg={6} className="top-24">
-            <Form layout="vertical" autoComplete="off" onSubmit={handleSubmit}>
+        <Form layout="vertical" autoComplete="off" onSubmit={handleSubmit}>
+          <Row justify="center" className="top-24">
+            <Col xs={18} lg={6} className="top-24">
               <Form.Item name="name" label="Name">
                 <Input
                   size="large"
@@ -273,25 +273,25 @@ export default function Account() {
                   }
                 />
               </Form.Item>
-            </Form>
-          </Col>
-        </Row>
-
-        <Row justify="center" className="bottom-24">
-          <Col xs={18} lg={6}>
-            <Form.Item>
-              <Button
-                type="primary"
-                icon={<i className="fa fa-upload right-12" />}
-                htmlType="submit"
-                className="top-24 bottom-12"
-                size="large"
-              >
-                Submit
-              </Button>
-            </Form.Item>
-          </Col>
-        </Row>
+            </Col>
+          </Row>
+          <Row justify="center" className="bottom-24">
+            <Col xs={18} lg={6}>
+              <Form.Item className="bottom-24">
+                <Button
+                  type="primary"
+                  icon={<i className="fa fa-upload right-12" />}
+                  htmlType="submit"
+                  className="top-24 bottom-12"
+                  size="large"
+                  block
+                >
+                  Submit
+                </Button>
+              </Form.Item>
+            </Col>
+          </Row>
+        </Form>
       </Content>
     </Layout>
   );
