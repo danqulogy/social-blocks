@@ -5,7 +5,7 @@ export class User {
   @PrimaryGeneratedColumn('uuid')
   _id: string;
 
-  @Column({ default: '' })
+  @Column({ default: null })
   did: string;
 
   @Column({ default: new Date().toISOString() })

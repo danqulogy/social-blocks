@@ -1,6 +1,9 @@
 import axios from 'axios';
 
-const API_URL = window.location.origin;
+const API_URL = window.location.origin.includes('8000')
+  ? 'http://localhost:3000'
+  : window.location.origin;
+
 const accessToken = localStorage?.getItem('x-social-block');
 
 export const socialApi = axios.create({
@@ -16,11 +19,11 @@ export const loginUser = async (did) => {
 };
 
 export const getProfile = async () => {
-  return (await axios.get(`/profile`)).data;
+  return (await socialApi.get(`/profile`)).data;
 };
 
-export const createProfile = async (profile) => {
-  return (await socialApi.put(`/profile`, profile)).data;
+export const createProfile = async (did) => {
+  return (await socialApi.put(`/profile`, { did: did })).data;
 };
 
 export const updateProfile = async (profile) => {

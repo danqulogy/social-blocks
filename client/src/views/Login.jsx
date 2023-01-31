@@ -1,15 +1,19 @@
 import { useState } from 'react';
 import { Connect } from '@did-connect/react';
-import { Button, Row, Col, Typography, Layout } from 'antd';
+import { Button, Row, Col, Typography, Layout, Image } from 'antd';
 import { Helmet } from 'react-helmet';
-import Logo from '../assets/Logo';
+import Logo from '../assets/logo.svg';
 import { useNavigate } from 'react-router-dom';
+import { login } from '../contexts/actions';
+import { useAuthDispatch } from '../contexts';
+import { createProfile } from '../services';
 const { Text } = Typography;
 const { Content } = Layout;
 
 export default function Login() {
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState('Connect');
+  const dispatch = useAuthDispatch();
   const navigate = useNavigate();
 
   const handleClose = () => {
@@ -24,11 +28,20 @@ export default function Login() {
     console.log(e);
   };
 
-  const handleComplete = (ctx, e) => {
-    setMessage('You are now connected');
-    console.log(ctx.currentConnected);
-    setOpen(false);
-    navigate('/');
+  const handleComplete = async (ctx, e) => {
+    try {
+      setMessage('You are now connected');
+      console.log(ctx.currentConnected);
+      setOpen(false);
+
+      await createProfile(ctx.currentConnected);
+
+      await login(dispatch, ctx.currentConnected).then(() => {
+        navigate('/account');
+      });
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   return (
@@ -40,14 +53,14 @@ export default function Login() {
         <Row justify="center" className="top-24">
           <Col xs={18} lg={4}>
             <Typography className="top-12 bottom-24">
-              <Text>
-                <Logo />
-              </Text>
+              <Image src={Logo} alt="Social Blocks" />
+
               <br />
               <Button
                 type="link"
-                className="brand"
-                href="https://socialblocks.io"
+                className="brand top-12 bottom-12"
+                href="https://www.socialblocks.io"
+                target="_blank"
               >
                 SOCIAL BLOCKS
               </Button>
@@ -67,10 +80,8 @@ export default function Login() {
               type="primary"
               icon={<i className="fa fa-lock right-12" />}
               size="large"
-              block
               className="email-bg"
-              href="/account"
-              // onClick={() => setOpen(true)}
+              onClick={() => setOpen(true)}
             >
               {message}
             </Button>

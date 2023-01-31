@@ -51,6 +51,12 @@ button {
   text-decoration: underline !important;
 }
 
+.profile-image {
+  height: 125px !important;
+  width: 125px !important;
+  border-radius: 100%;
+}
+
 .location {
   color: #ffffff !important;
   margin-right: 12px;

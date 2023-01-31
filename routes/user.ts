@@ -17,11 +17,15 @@ app.post('/', async function (req, res) {
 
     if (user?._id && rows < 2) {
       const tokens = await getToken(user.did);
+
       return res.send(tokens);
     }
 
     if (rows < 1) {
-      const newUser = myDataSource.getRepository(User).create(request);
+      const newUser = myDataSource
+        .getRepository(User)
+        .create({ did: request.did });
+
       await myDataSource.getRepository(User).save(newUser);
 
       const tokens = await getToken(request.did);

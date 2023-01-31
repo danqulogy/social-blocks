@@ -1,166 +1,256 @@
-import { Avatar, Button, Row, Col, Typography, Layout, QRCode } from 'antd';
+import { Button, Row, Col, Typography, Layout, QRCode, Image } from 'antd';
+import { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
-import Logo from '../assets/Logo';
+import Logo from '../assets/logo.svg';
+import { getProfile } from '../services';
 const { Title, Text } = Typography;
 const { Content, Footer } = Layout;
 
 export default function Home() {
+  const [profile, setProfile] = useState(null);
+
+  const fetchProfile = async () => {
+    const response = await getProfile();
+    if (response?.did) {
+      setProfile(response);
+    } else {
+      setProfile(false);
+    }
+  };
+
+  useEffect(() => {
+    if (!profile?.did && profile === null) {
+      fetchProfile();
+    }
+  }, [profile]);
+
   return (
     <Layout className="layout">
       <Helmet>
-        <title>Vincent | Social Blocks</title>
+        <title>{profile?.name && `${profile.name} | Social Blocks`}</title>
       </Helmet>
       <Content className="content">
+        {profile === false && (
+          <>
+            <Row justify="center" className="top-24">
+              <Col xs={18} lg={6}>
+                <Typography className="top-12">
+                  <Image src={Logo} alt="Social Blocks" />
+                  <br />
+                  <Button
+                    type="link"
+                    className="brand top-12 bottom-12"
+                    href="https://www.socialblocks.io"
+                    target="_blank"
+                  >
+                    SOCIAL BLOCKS
+                  </Button>
+                  <br />
+                  <Button
+                    type="dashed"
+                    className="top-24 bottom-12 web-bg"
+                    size="large"
+                    href="/login"
+                  >
+                    <i className="fa fa-unlock right-12" /> Login
+                  </Button>
+                </Typography>
+              </Col>
+            </Row>
+
+            <Row justify="center" className="top-48 bottom-12">
+              <Col xs={18} lg={6}>
+                <QRCode
+                  size={200}
+                  className="qrcode"
+                  value="https://www.socialblocks.io"
+                />
+              </Col>
+            </Row>
+          </>
+        )}
+
         <Row justify="center" className="top-24">
           <Col xs={18} lg={4}>
-            <Avatar size={80} className="avatar top-12">
-              V
-            </Avatar>
+            {profile?.ipfsHash && (
+              <Image
+                src={`https://gateway.pinata.cloud/ipfs/${profile.ipfsHash}`}
+                fallback={Logo}
+                className="profile-image top-12"
+              />
+            )}
+
             <Typography className="top-12">
-              <Title>Vincent</Title>
-              <Text strong>
-                <i className="fas fa-map-marker location" /> US
-              </Text>
+              <Title>{profile?.name && profile.name}</Title>
+
+              {profile?.location && (
+                <Text strong>
+                  <i className="fas fa-map-marker location" />{' '}
+                  {profile.location}
+                </Text>
+              )}
             </Typography>
             <Typography className="top-12">
-              <Text>A short bio about me and who I am.</Text>
+              <Text>{profile?.bio && profile.bio}</Text>
             </Typography>
           </Col>
         </Row>
 
         <Row justify="center" className="top-24">
           <Col xs={18} lg={6}>
-            <Button
-              type="primary"
-              icon={<i className="fa fa-envelope right-12" />}
-              size="large"
-              block
-              className="email-bg"
-              href="mailto:vincent@vmcodes.com"
-            >
-              Email
-            </Button>
+            {profile?.email && (
+              <Button
+                type="primary"
+                icon={<i className="fa fa-envelope right-12" />}
+                size="large"
+                block
+                className="email-bg"
+                href={`mailto:${profile.email}`}
+              >
+                Email
+              </Button>
+            )}
           </Col>
         </Row>
 
         <Row justify="center" className="top-24">
           <Col xs={18} lg={6}>
-            <Button
-              type="dashed"
-              icon={<i className="fa fa-globe right-12" />}
-              size="large"
-              block
-              className="web-bg"
-              href="https://vmcodes.com"
-            >
-              Website
-            </Button>
+            {profile?.website && (
+              <Button
+                type="dashed"
+                icon={<i className="fa fa-globe right-12" />}
+                size="large"
+                block
+                className="web-bg"
+                href={`${profile.website}`}
+              >
+                Website
+              </Button>
+            )}
           </Col>
         </Row>
 
         <Row justify="center" className="top-24">
           <Col xs={18} lg={6}>
-            <Button
-              type="secondary"
-              icon={<i className="fa-brands fa-github right-12" />}
-              size="large"
-              block
-              className="git-bg"
-            >
-              GitHub
-            </Button>
+            {profile?.github && (
+              <Button
+                type="secondary"
+                icon={<i className="fa-brands fa-github right-12" />}
+                size="large"
+                block
+                className="git-bg"
+                href={`${profile.github}`}
+              >
+                GitHub
+              </Button>
+            )}
           </Col>
         </Row>
 
         <Row justify="center" className="top-24">
           <Col xs={18} lg={6}>
-            <Button
-              type="primary"
-              icon={<i className="fa-brands fa-twitter right-12" />}
-              size="large"
-              block
-            >
-              Twitter
-            </Button>
+            {profile?.twitter && (
+              <Button
+                type="primary"
+                icon={<i className="fa-brands fa-twitter right-12" />}
+                size="large"
+                block
+                href={`${profile.twitter}`}
+              >
+                Twitter
+              </Button>
+            )}
           </Col>
         </Row>
 
         <Row justify="center" className="top-24">
           <Col xs={18} lg={6}>
-            <Button
-              type="dashed"
-              icon={<i className="fa-brands fa-tiktok right-12" />}
-              size="large"
-              block
-              className="tiktok-bg"
-            >
-              TikTok
-            </Button>
+            {profile?.tiktok && (
+              <Button
+                type="dashed"
+                icon={<i className="fa-brands fa-tiktok right-12" />}
+                size="large"
+                block
+                className="tiktok-bg"
+                href={`${profile.tiktok}`}
+              >
+                TikTok
+              </Button>
+            )}
           </Col>
         </Row>
 
         <Row justify="center" className="top-24">
           <Col xs={18} lg={6}>
-            <Button
-              type="secondary"
-              icon={<i className="fa-brands fa-instagram right-12" />}
-              size="large"
-              block
-              className="insta-bg"
-            >
-              Instagram
-            </Button>
+            {profile?.instagram && (
+              <Button
+                type="secondary"
+                icon={<i className="fa-brands fa-instagram right-12" />}
+                size="large"
+                block
+                className="insta-bg"
+                href={`${profile.instagram}`}
+              >
+                Instagram
+              </Button>
+            )}
           </Col>
         </Row>
 
         <Row justify="center" className="top-24">
           <Col xs={18} lg={6}>
-            <Button
-              type="primary"
-              icon={<i className="fa-brands fa-facebook right-12" />}
-              size="large"
-              block
-            >
-              Facebook
-            </Button>
+            {profile?.facebook && (
+              <Button
+                type="primary"
+                icon={<i className="fa-brands fa-facebook right-12" />}
+                size="large"
+                block
+                href={`${profile.facebook}`}
+              >
+                Facebook
+              </Button>
+            )}
           </Col>
         </Row>
 
         <Row justify="center" className="top-48 bottom-12">
           <Col xs={18} lg={6}>
-            <QRCode size={200} className="qrcode" value="https://ant.design/" />
+            {profile?.qrcode && (
+              <QRCode size={200} className="qrcode" value={profile.qrcode} />
+            )}
           </Col>
         </Row>
       </Content>
 
-      <Footer className="footer">
-        <Row justify="center">
-          <Col xs={18} lg={6}>
-            <Typography>
-              <Text>
-                <Logo />
-              </Text>
-              <br />
-              <Button
-                type="link"
-                className="brand"
-                href="https://socialblocks.io"
-              >
-                SOCIAL BLOCKS
-              </Button>
-              <br />
-              <Button
-                type="dashed"
-                className="top-24 bottom-12 web-bg"
-                size="large"
-                href="/login"
-              >
-                <i className="fa fa-unlock right-12" /> Login
-              </Button>
-            </Typography>
-          </Col>
-        </Row>
-      </Footer>
+      {profile?._id && (
+        <Footer className="footer">
+          <Row justify="center" className="top-24">
+            <Col xs={18} lg={6}>
+              <Typography className="top-12">
+                <Image src={Logo} alt="Social Blocks" />
+                <br />
+                <Button
+                  type="link"
+                  className="brand top-12 bottom-12"
+                  href="https://www.socialblocks.io"
+                  target="_blank"
+                >
+                  SOCIAL BLOCKS
+                </Button>
+                <br />
+                <Button
+                  type="dashed"
+                  className="top-24 bottom-12 web-bg"
+                  size="large"
+                  href="/login"
+                >
+                  <i className="fa fa-unlock right-12" /> Login
+                </Button>
+              </Typography>
+            </Col>
+          </Row>
+        </Footer>
+      )}
     </Layout>
   );
 }

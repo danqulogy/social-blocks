@@ -9,7 +9,7 @@ app.get('/', async function (req, res) {
   try {
     const results = await myDataSource.getRepository(Profile).find();
 
-    return res.json(results[0]);
+    return res.json(results);
   } catch (e) {
     console.log(e);
     return res.status(500);

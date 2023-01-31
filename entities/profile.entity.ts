@@ -5,10 +5,13 @@ export class Profile {
   @PrimaryGeneratedColumn('uuid')
   _id: string;
 
-  @Column({ default: '' })
+  @Column({ default: null })
   did: string;
 
-  @Column({ default: '' })
+  @Column({ default: null })
+  ipfsHash: string;
+
+  @Column({ default: null })
   name: string;
 
   @Column({ default: null })
@@ -38,7 +41,7 @@ export class Profile {
   @Column({ default: null })
   facebook: string;
 
-  @Column({ default: null })
+  @Column({ default: 'https://www.socialblocks.io' })
   qrcode: string;
 
   @Column({ default: new Date().toISOString() })
