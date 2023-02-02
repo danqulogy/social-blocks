@@ -41,5 +41,6 @@ environments: []
 capabilities:
   clusterMode: false
   component: true
-screenshots: []
+screenshots:
+  - blocks.png
 components: []
