@@ -11,7 +11,7 @@
 ## Contributing
 
 - Please feel free to inquire about any unassigned issues or make a pull request after forking the repository.
-- If making a commit, please clear the database folder and add an empty app.db file.
+- If making a commit. Please clear the database folder, add an empty app.db file, and restart the application first.
 
 ## Using the Blocklet Server and Blocklet CLI
 

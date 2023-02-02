@@ -6,7 +6,7 @@ export async function getToken(did: string) {
       {
         sub: did,
       },
-      process.env.JWT_SECRET,
+      'EZR<;1Jn4e]h^)1Fjo%7',
       { expiresIn: '1d' },
     ),
   ]);
@@ -25,9 +25,7 @@ export async function verifyToken(req) {
       return false;
     }
 
-    const verified = jwt.verify(token, process.env.JWT_SECRET);
-
-    console.log(verified);
+    const verified = jwt.verify(token, 'EZR<;1Jn4e]h^)1Fjo%7');
 
     if (verified) {
       return verified.sub;
