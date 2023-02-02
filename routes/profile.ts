@@ -9,40 +9,38 @@ app.get('/', async function (req, res) {
   try {
     const results = await myDataSource.getRepository(Profile).find();
 
-    return res.json(results);
+    return res.json(results[0]);
   } catch (e) {
     console.log(e);
-    return res.status(500);
+    return res.sendStatus(500);
   }
 });
 
 // create profile
 app.put('/', async function (req, res) {
   try {
+    const request = req.body;
+
     const rows = await myDataSource.getRepository(Profile).count({ take: 1 });
 
-    const verified = verifyToken(req, res);
-
-    if (rows < 2 && verified) {
-      const request = req.body;
-
+    if (rows < 1) {
       const profile = myDataSource.getRepository(Profile).create(request);
       await myDataSource.getRepository(Profile).save(profile);
 
-      return res.status(201);
+      return res.sendStatus(201);
     }
 
-    return res.status(403);
+    return res.sendStatus(200);
   } catch (e) {
     console.log(e);
-    return res.status(500);
+    return res.sendStatus(500);
   }
 });
 
 // update profile
 app.post('/', async function (req, res) {
   try {
-    const verified = verifyToken(req, res);
+    const verified = await verifyToken(req);
     const request = req.body;
 
     if (verified === request.did) {
@@ -53,37 +51,13 @@ app.post('/', async function (req, res) {
       myDataSource.getRepository(Profile).merge(profile, request);
       await myDataSource.getRepository(Profile).save(profile);
 
-      return res.status(201);
+      return res.sendStatus(201);
     }
 
-    return res.status(403);
+    return res.sendStatus(403);
   } catch (e) {
     console.log(e);
-    return res.status(500);
-  }
-});
-
-// update profile photo
-app.post('/image', async function (req, res) {
-  try {
-    const verified = verifyToken(req, res);
-    const request = req.body;
-
-    if (verified === request.did) {
-      const profile = await myDataSource.getRepository(Profile).findOneBy({
-        did: request.did,
-      });
-
-      myDataSource.getRepository(Profile).merge(profile, request);
-      await myDataSource.getRepository(Profile).save(profile);
-
-      return res.status(201);
-    }
-
-    return res.status(403);
-  } catch (e) {
-    console.log(e);
-    return res.status(500);
+    return res.sendStatus(500);
   }
 });
 

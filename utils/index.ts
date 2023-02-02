@@ -16,15 +16,18 @@ export async function getToken(did: string) {
   };
 }
 
-export async function verifyToken(req, res) {
+export async function verifyToken(req) {
   try {
     const token = req?.headers?.authorization?.split(' ')[1];
+    console.log(token);
 
     if (!token) {
       return false;
     }
 
     const verified = jwt.verify(token, process.env.JWT_SECRET);
+
+    console.log(verified);
 
     if (verified) {
       return verified.sub;

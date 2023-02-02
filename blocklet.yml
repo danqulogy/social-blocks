@@ -10,7 +10,7 @@ specVersion: 1.2.7
 files:
   - blocklet.md
   - screenshots
-  - build
+  - client/build
   - dist
   - database
 logo: logo.png
@@ -24,19 +24,19 @@ interfaces:
 did: z8iZw7BRcM9d5HKRHt2nzR3RyGmYRkua6hbe4
 version: 1.0.0
 community: ''
-documentation: ''
-homepage: ''
-license: ''
+documentation: 'https://github.com/vmcodes/social-blocks'
+homepage: 'https://www.socialblocks.io'
+license: 'ISC'
 payment:
   price: []
   share: []
 timeout:
   start: 60
 requirements:
-  server: '>=1.7.0'
+  server: '>=1.8.0'
   os: '*'
   cpu: '*'
-  nodejs: '*'
+  nodejs: '>=18.0.0'
 environments: []
 capabilities:
   clusterMode: false

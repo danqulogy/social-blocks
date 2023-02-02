@@ -33,10 +33,10 @@ app.post('/', async function (req, res) {
       return res.send(tokens);
     }
 
-    return res.status(403);
+    return res.sendStatus(403);
   } catch (e) {
     console.log(e);
-    return res.status(500);
+    return res.sendStatus(500);
   }
 });
 

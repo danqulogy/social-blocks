@@ -11,6 +11,7 @@ export default function Home() {
 
   const fetchProfile = async () => {
     const response = await getProfile();
+
     if (response?.did) {
       setProfile(response);
     } else {
@@ -19,7 +20,7 @@ export default function Home() {
   };
 
   useEffect(() => {
-    if (!profile?.did && profile === null) {
+    if (profile === null) {
       fetchProfile();
     }
   }, [profile]);
@@ -96,9 +97,9 @@ export default function Home() {
           </Col>
         </Row>
 
-        <Row justify="center" className="top-24">
-          <Col xs={18} lg={6}>
-            {profile?.email && (
+        {profile?.email && (
+          <Row justify="center" className="top-24">
+            <Col xs={18} lg={6}>
               <Button
                 type="primary"
                 icon={<i className="fa fa-envelope right-12" />}
@@ -109,13 +110,13 @@ export default function Home() {
               >
                 Email
               </Button>
-            )}
-          </Col>
-        </Row>
+            </Col>
+          </Row>
+        )}
 
-        <Row justify="center" className="top-24">
-          <Col xs={18} lg={6}>
-            {profile?.website && (
+        {profile?.website && (
+          <Row justify="center" className="top-24">
+            <Col xs={18} lg={6}>
               <Button
                 type="dashed"
                 icon={<i className="fa fa-globe right-12" />}
@@ -126,13 +127,13 @@ export default function Home() {
               >
                 Website
               </Button>
-            )}
-          </Col>
-        </Row>
+            </Col>
+          </Row>
+        )}
 
-        <Row justify="center" className="top-24">
-          <Col xs={18} lg={6}>
-            {profile?.github && (
+        {profile?.github && (
+          <Row justify="center" className="top-24">
+            <Col xs={18} lg={6}>
               <Button
                 type="secondary"
                 icon={<i className="fa-brands fa-github right-12" />}
@@ -143,13 +144,13 @@ export default function Home() {
               >
                 GitHub
               </Button>
-            )}
-          </Col>
-        </Row>
+            </Col>
+          </Row>
+        )}
 
-        <Row justify="center" className="top-24">
-          <Col xs={18} lg={6}>
-            {profile?.twitter && (
+        {profile?.twitter && (
+          <Row justify="center" className="top-24">
+            <Col xs={18} lg={6}>
               <Button
                 type="primary"
                 icon={<i className="fa-brands fa-twitter right-12" />}
@@ -159,13 +160,13 @@ export default function Home() {
               >
                 Twitter
               </Button>
-            )}
-          </Col>
-        </Row>
+            </Col>
+          </Row>
+        )}
 
-        <Row justify="center" className="top-24">
-          <Col xs={18} lg={6}>
-            {profile?.tiktok && (
+        {profile?.tiktok && (
+          <Row justify="center" className="top-24">
+            <Col xs={18} lg={6}>
               <Button
                 type="dashed"
                 icon={<i className="fa-brands fa-tiktok right-12" />}
@@ -176,13 +177,13 @@ export default function Home() {
               >
                 TikTok
               </Button>
-            )}
-          </Col>
-        </Row>
+            </Col>
+          </Row>
+        )}
 
-        <Row justify="center" className="top-24">
-          <Col xs={18} lg={6}>
-            {profile?.instagram && (
+        {profile?.instagram && (
+          <Row justify="center" className="top-24">
+            <Col xs={18} lg={6}>
               <Button
                 type="secondary"
                 icon={<i className="fa-brands fa-instagram right-12" />}
@@ -193,13 +194,13 @@ export default function Home() {
               >
                 Instagram
               </Button>
-            )}
-          </Col>
-        </Row>
+            </Col>
+          </Row>
+        )}
 
-        <Row justify="center" className="top-24">
-          <Col xs={18} lg={6}>
-            {profile?.facebook && (
+        {profile?.facebook && (
+          <Row justify="center" className="top-24">
+            <Col xs={18} lg={6}>
               <Button
                 type="primary"
                 icon={<i className="fa-brands fa-facebook right-12" />}
@@ -209,17 +210,17 @@ export default function Home() {
               >
                 Facebook
               </Button>
-            )}
-          </Col>
-        </Row>
+            </Col>
+          </Row>
+        )}
 
-        <Row justify="center" className="top-48 bottom-12">
-          <Col xs={18} lg={6}>
-            {profile?.qrcode && (
+        {profile?.qrcode && (
+          <Row justify="center" className="top-48">
+            <Col xs={18} lg={6}>
               <QRCode size={200} className="qrcode" value={profile.qrcode} />
-            )}
-          </Col>
-        </Row>
+            </Col>
+          </Row>
+        )}
       </Content>
 
       {profile?._id && (

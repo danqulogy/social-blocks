@@ -4,7 +4,7 @@ export const initialState = {
   authenticated: localStorage?.getItem('x-social-blocks') ? true : false,
 };
 
-export const AuthReducer = (initialState, action) => {
+export const AuthReducer = (action, initialState) => {
   switch (action.type) {
     case 'REQUEST_LOGIN':
       return {

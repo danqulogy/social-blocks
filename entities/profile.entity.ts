@@ -6,40 +6,40 @@ export class Profile {
   _id: string;
 
   @Column({ default: null })
-  did: string;
+  did: string | null;
 
   @Column({ default: null })
-  ipfsHash: string;
+  ipfsHash: string | null;
 
   @Column({ default: null })
-  name: string;
+  name: string | null;
 
   @Column({ default: null })
-  location: string;
+  location: string | null;
 
   @Column({ default: null })
-  bio: string;
+  bio: string | null;
 
   @Column({ default: null })
-  email: string;
+  email: string | null;
 
   @Column({ default: null })
-  website: string;
+  website: string | null;
 
   @Column({ default: null })
-  github: string;
+  github: string | null;
 
   @Column({ default: null })
-  twitter: string;
+  twitter: string | null;
 
   @Column({ default: null })
-  tiktok: string;
+  tiktok: string | null;
 
   @Column({ default: null })
-  instagram: string;
+  instagram: string | null;
 
   @Column({ default: null })
-  facebook: string;
+  facebook: string | null;
 
   @Column({ default: 'https://www.socialblocks.io' })
   qrcode: string;

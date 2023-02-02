@@ -3,7 +3,6 @@ import { Connect } from '@did-connect/react';
 import { Button, Row, Col, Typography, Layout } from 'antd';
 import { Helmet } from 'react-helmet';
 import Logo from '../assets/logo.svg';
-import { useNavigate } from 'react-router-dom';
 import { login } from '../contexts/actions';
 import { useAuthDispatch } from '../contexts';
 import { createProfile } from '../services';
@@ -13,32 +12,31 @@ const { Content } = Layout;
 export default function Login() {
   const [open, setOpen] = useState(false);
   const dispatch = useAuthDispatch();
-  const navigate = useNavigate();
 
   const handleClose = () => {
     setOpen(false);
   };
 
-  const handleApprove = async (ctx, e) => {
-    console.log(e);
+  const handleApprove = async (ctx, event) => {
+    console.log(event);
   };
 
-  const handleConnect = async (ctx, e) => {
-    console.log(e);
+  const handleConnect = async (ctx, event) => {
+    console.log(event);
   };
 
-  const handleComplete = async (ctx, e) => {
+  const handleComplete = async (ctx, event) => {
+    console.log(event);
+
     try {
-      setOpen(false);
+      await createProfile(ctx.currentConnected.userDid);
 
-      await createProfile(ctx.currentConnected);
-
-      await login(dispatch, ctx.currentConnected).then(() => {
-        navigate('/account');
-      });
+      await login(dispatch, ctx.currentConnected.userDid);
     } catch (e) {
       console.log(e);
     }
+
+    window.location.assign('/account');
   };
 
   return (
@@ -53,6 +51,7 @@ export default function Login() {
               <img src={Logo} alt="Social Blocks" />
 
               <br />
+
               <Button
                 type="link"
                 className="brand top-12 bottom-12"

@@ -4,7 +4,7 @@ const API_URL = window.location.origin.includes('8000')
   ? 'http://localhost:3000'
   : window.location.origin;
 
-const accessToken = localStorage?.getItem('x-social-block');
+const accessToken = localStorage?.getItem('x-social-blocks');
 
 export const socialApi = axios.create({
   baseURL: API_URL,

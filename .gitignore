@@ -12,6 +12,7 @@
 /build
 /dist
 .blocklet
+.blocklet-server
 
 # misc
 .DS_Store

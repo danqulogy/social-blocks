@@ -8,7 +8,7 @@
     "postinstall": "cd client && yarn",
     "build": "tsc && cd client && yarn build",
     "start": "node dist/index.js",
-    "clean": "rd dist /s /q && rd build /s /q",
+    "clean": "rd dist /s /q && cd client && rd build /s /q",
     "bundle": "blocklet bundle --zip --create-release",
     "deploy": "blocklet deploy .blocklet/bundle"
   },

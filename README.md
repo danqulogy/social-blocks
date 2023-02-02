@@ -1,8 +1,8 @@
-# `Social Blocks`
+# Social Blocks
 
 ![Social Blocks](logo.png)
 
-## Monorepo for the `Social Blocks` DApp on ArcBlock
+## Monorepo for the Social Blocks DApp on ArcBlock
 
 - This project can be deployed on a Blocklet Server and allows for only one user per an instance.
 - Once a user authenticates with DID Wallet, they are the sole owner.
@@ -11,14 +11,16 @@
 ## Contributing
 
 - Please feel free to inquire about any unassigned issues or make a pull request after forking the repository.
+- If making a commit, please clear the database folder and add an empty app.db file.
 
-## It is highly recommended to develop on Blocklet Server and use the Blocklet CLI
+## Using the Blocklet Server and Blocklet CLI
 
 ```bash
 yarn global add @blocklet/cli
 git clone https://github.com/vmcodes/social-blocks
 cd social-blocks
 yarn install
+yarn build
 blocklet server init --mode debug
 blocklet server start
 blocklet dev
