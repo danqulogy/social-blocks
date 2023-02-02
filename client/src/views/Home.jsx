@@ -157,6 +157,7 @@ export default function Home() {
                 size="large"
                 block
                 href={`${profile.twitter}`}
+                className="twitter-bg"
               >
                 Twitter
               </Button>
@@ -207,6 +208,7 @@ export default function Home() {
                 size="large"
                 block
                 href={`${profile.facebook}`}
+                className="fb-bg"
               >
                 Facebook
               </Button>

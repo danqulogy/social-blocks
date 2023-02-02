@@ -101,6 +101,15 @@ button {
 .git-bg {
   color: #ffffff !important;
   background: #000000 !important;
+  font-weight: bold !important;
+}
+
+.twitter-bg {
+  font-weight: bold !important;
+}
+
+.tiktok-bg {
+  font-weight: bold !important;
 }
 
 .tiktok-bg span {
@@ -114,6 +123,7 @@ button {
 .insta-bg {
   color: #ffd68a !important;
   background: #000000 !important;
+  font-weight: bold !important;
 }
 
 .insta-bg span {
@@ -122,6 +132,10 @@ button {
 
 .insta-bg i {
   color: #ffd68a !important;
+}
+
+.fb-bg {
+  font-weight: bold !important;
 }
 
 .top-48 {
