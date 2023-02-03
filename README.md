@@ -56,7 +56,7 @@ yarn deploy
 
 ## Dark Mode
 
-- To enable dark mode, locate client/index.js.
+- To enable dark mode, locate `client/index.js`.
 - Update the styles to: `import './assets/dark.css'` and `algorithm: theme.darkAlgorithm`.
 
 ## License
