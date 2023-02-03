@@ -54,6 +54,11 @@ yarn bundle
 yarn deploy
 ```
 
+## Dark Mode
+
+- To enable dark mode, locate client/index.js.
+- Update the styles to: `import './assets/dark.css'` and `algorithm: theme.darkAlgorithm`.
+
 ## License
 
 This code is licensed under the ISC license found in the [LICENSE](LICENSE) file.

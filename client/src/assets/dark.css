@@ -1,0 +1,239 @@
+h1,
+h2,
+span {
+  color: #ffffff !important;
+}
+
+label {
+  color: #e0e0e0 !important;
+}
+
+span i {
+  color: #e0e0e0 !important;
+}
+
+button {
+  font-size: 18px !important;
+  font-weight: bold !important;
+  border: none !important;
+}
+
+.ant-btn {
+  border: none !important;
+}
+
+.ant-btn:hover {
+  opacity: 0.8 !important;
+}
+
+.layout {
+  min-height: 100vh !important;
+  max-width: 100vw;
+  overflow-x: hidden;
+  text-align: center;
+  background: #000000 !important;
+}
+
+.content {
+  min-height: 100vh !important;
+  max-width: 100vw;
+  overflow-x: hidden;
+  text-align: center;
+  background: #000000 !important;
+}
+
+.footer {
+  bottom: 0;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  text-align: center;
+  background: #000000 !important;
+}
+
+.brand span {
+  color: #e0e0e0 !important;
+  font-weight: bold;
+}
+
+.brand span:hover {
+  text-decoration: underline !important;
+}
+
+.profile-image {
+  height: 125px !important;
+  width: 125px !important;
+  border-radius: 100%;
+}
+
+.location {
+  color: #ffffff !important;
+  margin-right: 12px;
+}
+
+.avatar {
+  background: #000000 !important;
+  border-color: #e0e0e0 !important;
+  border-width: 3px;
+}
+
+.avatar span {
+  color: #ffffff !important;
+  font-size: 54px;
+  font-weight: bold;
+}
+
+.qrcode {
+  margin: 0px auto;
+}
+
+.email-bg span {
+  color: #ffffff !important;
+  font-weight: bold !important;
+}
+
+.email-bg i {
+  color: #ffffff !important;
+  font-weight: bold !important;
+}
+
+.web-bg span {
+  color: #e0e0e0 !important;
+  font-weight: bold !important;
+}
+
+.web-bg i {
+  color: #e0e0e0 !important;
+  font-weight: bold !important;
+}
+
+.git-bg {
+  color: #e0e0e0 !important;
+  background: #141414 !important;
+  font-weight: bold !important;
+}
+
+.twitter-bg {
+  font-weight: bold !important;
+}
+
+.tiktok-bg {
+  font-weight: bold !important;
+}
+
+.tiktok-bg span {
+  color: #e0e0e0 !important;
+}
+
+.tiktok-bg i {
+  color: #e0e0e0 !important;
+}
+
+.insta-bg {
+  color: #e0e0e0 !important;
+  background: #000000 !important;
+  font-weight: bold !important;
+}
+
+.insta-bg span {
+  color: #e0e0e0 !important;
+}
+
+.insta-bg i {
+  color: #e0e0e0 !important;
+}
+
+.fb-bg {
+  font-weight: bold !important;
+}
+
+.top-48 {
+  margin-top: 48px;
+}
+
+.top-24 {
+  margin-top: 24px;
+}
+
+.top-12 {
+  margin-top: 12px;
+}
+
+.bottom-24 {
+  margin-bottom: 24px;
+}
+
+.bottom-12 {
+  margin-bottom: 12px;
+}
+
+.right-12 {
+  margin-right: 12px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.ant-upload-list-text {
+  color: #ffffff;
+}
+
+.ant-upload-list-item-done {
+  margin: auto;
+  display: block !important;
+}
+
+.anticon-delete {
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.anticon-paper-clip {
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.ant-upload-list-item-name {
+  margin-top: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #e0e0e0 !important;
+}
+
+.ant-upload-list-item-name:hover {
+  text-decoration: underline;
+}
+
+.ant-btn-dashed:hover {
+  border-color: #e0e0e0 !important;
+}
+
+.ant-btn-primary {
+  background-color: #141414 !important;
+}
+
+.ant-btn-default:hover {
+  border-color: #e0e0e0 !important;
+}
+
+.ant-input-affix-wrapper:hover {
+  border-color: #e0e0e0 !important;
+}
+
+.ant-input-affix-wrapper:active {
+  border-color: #e0e0e0 !important;
+}
+
+.ant-input-affix-wrapper-focused {
+  border-color: #e0e0e0 !important;
+}
+
+input {
+  border-color: #e0e0e0 !important;
+}
+
+::placeholder {
+  color: #e0e0e0 !important;
+  opacity: 0.5;
+}

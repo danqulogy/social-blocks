@@ -22,9 +22,9 @@ interfaces:
     port: BLOCKLET_PORT
     protocol: http
 did: z8iZw7BRcM9d5HKRHt2nzR3RyGmYRkua6hbe4
-version: 1.0.0
+version: 1.0.1
 community: ''
-documentation: 'https://github.com/vmcodes/social-blocks'
+documentation: 'https://github.com/vmcodes/social-blocks#readme'
 homepage: 'https://www.socialblocks.io'
 license: 'ISC'
 payment:
@@ -43,4 +43,5 @@ capabilities:
   component: true
 screenshots:
   - blocks.png
+  - dark-mode.png
 components: []
