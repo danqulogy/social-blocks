@@ -1,6 +1,7 @@
 export const initialState = {
   loading: false,
   errorMessage: '',
+  theme: !localStorage?.getItem('x-theme-blocks') ? 'default' : 'dark',
   authenticated: localStorage?.getItem('x-social-blocks') ? true : false,
 };
 
