@@ -1,15 +1,12 @@
 import '../assets/styles.css';
 import { ConfigProvider, theme } from 'antd';
-import { useAuthState } from '../contexts';
 
-const ThemeProvider = ({ children }) => {
-  const user = useAuthState();
-
+const ThemeProvider = ({ children, algorithm }) => {
   return (
     <ConfigProvider
       theme={{
         algorithm:
-          user.theme === 'default'
+          algorithm === 'default'
             ? theme.defaultAlgorithm
             : theme.darkAlgorithm,
       }}
