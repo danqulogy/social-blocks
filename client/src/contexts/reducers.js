@@ -1,7 +1,8 @@
 export const initialState = {
   loading: false,
   errorMessage: '',
-  theme: !localStorage?.getItem('x-theme-blocks') ? 'default' : 'dark',
+  theme:
+    localStorage?.getItem('x-theme-blocks') !== 'default' ? 'default' : 'dark',
   authenticated: localStorage?.getItem('x-social-blocks') ? true : false,
 };
 
@@ -30,6 +31,7 @@ export const AuthReducer = (action, initialState) => {
 
     case 'LOGIN_ERROR':
       return {
+        ...initialState,
         loading: false,
         authenticated: false,
         errorMessage: action.payload,

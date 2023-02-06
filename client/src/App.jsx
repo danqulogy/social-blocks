@@ -10,26 +10,22 @@ function App() {
   const user = useAuthState();
 
   return (
-    <>
-      {user && (
-        <ThemeProvider algorithm={user.theme}>
-          <Suspense fallback={<></>}>
-            <BrowserRouter>
-              <Routes>
-                <Route path="/" element={<Home />} exact />
-                <Route path="/login" element={<Login />} exact />
+    <ThemeProvider>
+      <Suspense fallback={<></>}>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Home />} exact />
+            <Route path="/login" element={<Login />} exact />
 
-                {user.authenticated && (
-                  <Route path="/account" element={<Account />} exact />
-                )}
+            {user.authenticated && (
+              <Route path="/account" element={<Account />} exact />
+            )}
 
-                <Route path="*" element={<Navigate to="/" replace />} />
-              </Routes>
-            </BrowserRouter>
-          </Suspense>
-        </ThemeProvider>
-      )}
-    </>
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </BrowserRouter>
+      </Suspense>
+    </ThemeProvider>
   );
 }
 
