@@ -14,7 +14,7 @@ export const ThemeSelector = ({ children, theme }) => {
   );
 };
 
-const ThemeProvider = ({ children, algorithm }) => {
+const ThemeProvider = ({ children }) => {
   const user = useAuthState();
 
   return (
