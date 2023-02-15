@@ -4,7 +4,7 @@
 require('dotenv').config();
 const blocklet = require('./app');
 const debug = require('debug')('express-demo:server');
-const http = require('http');
+import {createServer} from 'http';
 require('jade');
 
 /**
@@ -20,7 +20,7 @@ blocklet.set('port', port);
  * Create HTTP server.
  */
 
-const server = http.createServer(blocklet);
+const server = createServer(blocklet);
 
 /**
  * Listen on provided port, on all network interfaces.

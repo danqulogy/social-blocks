@@ -1,5 +1,5 @@
-const express = require('express');
-const app = express.Router();
+import {Router} from 'express';
+const app = Router();
 
 /* GET home page. */
 app.get('/', function (req, res, next) {
