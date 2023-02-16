@@ -27,7 +27,7 @@ export default function Login() {
 
   const handleComplete = async (ctx, event) => {
     console.log(event);
-
+    console.log(ctx)
     try {
       await createProfile(ctx.currentConnected.userDid);
 
